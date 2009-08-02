@@ -1,0 +1,78 @@
+Twitter API client library for Python 3.x
+
+Somebugs Software Lab (http://somebugs.com)
+© 2009 Alexander Chichenin 
+
+Contacts:
+
+sovnarkom@somebugs.com,
+http://twitter.com/sovnarkom
+
+———————————————————————————————————————————————————————————————————————————————
+
+Supports:
+
+Twitter REST API (July 2009 version)
+Twitter Search API (July 2009 version)
+Twitter OAuth API (July 2009 version, via external oauth library)
+Twitter Streaming API (July 2009 alpha version)
+
+Depends on:
+
+OAuth Python library by Leah Culver
+(ported version included without installer)  
+
+———————————————————————————————————————————————————————————————————————————————
+
+How to use it:
+
+————————————————————————————————————————————————————
+#REST API, (Search API similar)
+
+from instwitter import InsTwitterError
+from instwitter formatters.json import JSON    # or another formatter
+from instwitter.rest.aggregated import FullAPI # or another API
+
+...
+
+api = FullAPI(JSON)
+
+#api.set_basic_authentication(<login>, <password>)
+#or
+api.set_oauth_authentication((<consumer_key>, <consumer_secret>,
+                              <access_key>, <access_secret>))
+      
+try:                                  
+    res = api.account_update_profile_image(<path to image>)
+except InsTwitterError as e:
+    ...
+————————————————————————————————————————————————————
+
+————————————————————————————————————————————————————
+#Stream API (alpha)
+
+from instwitter import InsTwitterError
+from instwitter formatters.json import JSON    # but no XML!
+from instwitter.streaming import StreamingAPI
+
+
+...
+
+api = StreamingAPI(JSON)
+
+# Only simple auth supported by streaming.twitter 
+# at the moment, but instwitter will use any auth as soon 
+# as twitter will
+api.set_basic_authentication(<login>, <password>)
+      
+try:                                  
+    for status in api.track('google'):
+        ...
+    
+except InsTwitterError as e:
+    ...
+————————————————————————————————————————————————————
+
+
+ 
+———————————————————————————————————————————————————————————————————————————————
