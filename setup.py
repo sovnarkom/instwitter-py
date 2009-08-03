@@ -6,5 +6,13 @@ setup(name='instwitter',
       author='Alecander Chichenin',
       author_email='sovnarkom@somebugs.com',
       url='http://github.com/sovnarkom/instwitter-py',
-      packages=['instwitter', 'oauth']
+      packages=[
+                'instwitter',
+                'instwitter.authenticators',
+                'instwitter.formatters',
+                'instwitter.rest',
+                'instwitter.rest.aggregated',
+                'instwitter.streaming',
+                'oauth'
+               ]
       )
