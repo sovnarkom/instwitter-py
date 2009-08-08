@@ -9,7 +9,7 @@ from . import RESTAPI, authneeded
 class TimelineAPI(RESTAPI):
     
     def status_public_timeline(self):
-        path = self._get_method_path('statuses/friends_timeline')
+        path = self._get_method_path('statuses/public_timeline')
         return self._get_request_data(path)
 
     @authneeded

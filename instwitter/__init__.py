@@ -61,11 +61,7 @@ class TwitterAPI(object):
             if response.status == 200:
                 return self.formatter.format(response.read())
             else:
-                if response.status < 500:
-                    raise InsTwitterResponseError(response.status, 
-                                                  self.formatter.format(response.read()))
-                else:
-                    raise InsTwitterResponseError(response.status, response.read())
+                raise InsTwitterResponseError(response.status, response.read())
         except Exception as e:
             raise InsTwitterProcessError('Unable to process request with exception: ' + str(e))
             
