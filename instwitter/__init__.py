@@ -25,16 +25,18 @@ OAuth Python library by Leah Culver
 '''
 
 __author__ = 'Alexander Chichenin <sovnarkom@somebugs.com>'
-__version__ = '0.9.0'
+__version__ = '0.9.5'
 
 
 class TwitterAPI(object):
     _host = 'twitter.com'
 
-    def __init__(self, formatter_type, user_agent='InsTwitter/0.1'):
+    def __init__(self, formatter_type, user_agent=None):
         super().__init__()
-        self._user_agent = user_agent
-        self._headers = {'User-Agent': user_agent}
+        self._user_agent = 'InsTwitter/' + __version__
+        if user_agent is not None:
+            self._user_agent +=  ' ' + user_agent 
+        self._headers = {'User-Agent': self._user_agent}
         self.formatter = formatter_type()
         self._format = self.formatter._format 
 

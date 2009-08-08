@@ -1,7 +1,8 @@
 from distutils.core import setup
+from instwitter import __version__
 
 setup(name='instwitter',
-      version='0.9.0',
+      version=__version__,
       description='Twitter API Library',
       author='Alecander Chichenin',
       author_email='sovnarkom@somebugs.com',
