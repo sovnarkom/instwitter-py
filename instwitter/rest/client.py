@@ -5,11 +5,11 @@ Created on Aug 2, 2009
 '''
 
 from .partial import account, block, direct_message, favorite, friendship, help, \
-notification, saved_searches, social_graph, status, timeline, user
+notification, saved_searches, social_graph, status, user
 
 class ClientAPI(account.AccountAPI, block.BlockAPI, direct_message.DirectMessageAPI, 
           favorite.FavoriteAPI, friendship.FriendshipAPI, help.HelpAPI, 
           notification.NotificationAPI, saved_searches.SavedSearchesAPI,
-          social_graph.SocialGraphAPI, status.StatusAPI, timeline.TimelineAPI,
+          social_graph.SocialGraphAPI, status.StatusAPI,
           user.UserAPI):
     pass
