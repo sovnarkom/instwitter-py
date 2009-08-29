@@ -52,48 +52,18 @@ class StreamingAPI(TwitterAPI, Authenticator):
     @authneeded
     def firehose(self, count=None, delimited=None):
         params = self._filter_method_params(locals())
-        path = self._get_method_path('firehose')
-        self._generate_stream(path, params)
-    
-    @authneeded
-    def gardenhose(self, count=None, delimited=None):
-        params = self._filter_method_params(locals())
-        path = self._get_method_path('gardenhose')
-        self._generate_stream(path, params)
-    
-    # public
-    @authneeded
-    def spritzer(self, delimited=None):
-        params = self._filter_method_params(locals())
-        path = self._get_method_path('spitzer')
-        self._generate_stream(path, params)
-    
-    # followings
-    
-    @authneeded
-    def birddog(self, follow, count=None, delimited=None):
-        params = self._filter_method_params(locals())
-        path = self._get_method_path('birddog')
+        path = self._get_method_path('/1/statuses/firehose')
         self._generate_stream(path, params)
 
     @authneeded
-    def shadow(self, follow, count=None, delimited=None):
+    def statuses_sample(self, delimited=None):
         params = self._filter_method_params(locals())
-        path = self._get_method_path('shadow')
+        path = self._get_method_path('1/statuses/sample')
         self._generate_stream(path, params)
     
-    # public
     @authneeded
-    def follow(self, follow, delimited=None):
+    def statuses_filter(self, track, follow, count=None, delimited=None):
         params = self._filter_method_params(locals())
-        path = self._get_method_path('follow')
+        path = self._get_method_path('1/statuses/filter')
         self._generate_stream(path, params)
     
-    # track
-
-    @authneeded
-    def track(self, track, delimited=None):
-        params = self._filter_method_params(locals())
-        path = self._get_method_path('track')
-        return self._generate_stream(path, params)
-
