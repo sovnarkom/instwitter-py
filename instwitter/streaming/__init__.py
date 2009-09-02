@@ -53,17 +53,17 @@ class StreamingAPI(TwitterAPI, Authenticator):
     def firehose(self, count=None, delimited=None):
         params = self._filter_method_params(locals())
         path = self._get_method_path('/1/statuses/firehose')
-        self._generate_stream(path, params)
+        return self._generate_stream(path, params)
 
     @authneeded
     def statuses_sample(self, delimited=None):
         params = self._filter_method_params(locals())
         path = self._get_method_path('1/statuses/sample')
-        self._generate_stream(path, params)
+        return self._generate_stream(path, params)
     
     @authneeded
     def statuses_filter(self, track, follow, count=None, delimited=None):
         params = self._filter_method_params(locals())
         path = self._get_method_path('1/statuses/filter')
-        self._generate_stream(path, params)
+        return self._generate_stream(path, params)
     
